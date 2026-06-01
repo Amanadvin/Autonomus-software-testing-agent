@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <main style={styles.container}>
       <div style={styles.hero}>
-        <div style={styles.badge}>Next.js Boilerplate CLI 🚀</div>
+        <div style={styles.badge}>Next.js Boilerplate CLI </div>
         <h1 style={styles.title}>
           Your Premium SaaS Stack <span style={styles.gradient}>Is Ready</span>
         </h1>
