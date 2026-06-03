@@ -1,34 +1,37 @@
-"use client";
-import { UserDetailContent } from '@/context/UserDeatilContext';
+"use client"
+import { useUser } from '@clerk/nextjs';
+import { UserDetailContext } from '@/context/UserDetailContext';
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 
 function Provider({
-  children,
+    children,
 }: Readonly<{
-  children: React.ReactNode;
+    children: React.ReactNode;
 }>) {
- const [userDetail, setUserDetail] = useState<any>();
 
-  useEffect(() => {
-    CreateNewUser();
-  }, []);
+    const { user } = useUser();
+    const [userDetail, setUserDetail] = useState<any>();
 
-  const CreateNewUser = async () => {
-    try {
-      const result = await axios.post('/api/users', {});
-      console.log("Result", result);
-      setUserDetail(result.data?.user ?? null);
-    } catch (error) {
-      console.log(error);
+    useEffect(() => {
+        if (user) {
+            CreateNewUser();
+        }
+    }, [user])
+
+    const CreateNewUser = async () => {
+        const result = await axios.post('/api/users', {});
+
+        console.log("Result", result);
+        setUserDetail(result.data?.user);
+
     }
-  };
 
-  return (
-    <UserDetailContent.Provider value={{ userDetail, setUserDetail }}>
-    <div>{children}</div>
-    </UserDetailContent.Provider>
-  );
+    return (
+        <UserDetailContext.Provider value={{ userDetail, setUserDetail }}>
+            <div>{children}</div>
+        </UserDetailContext.Provider>
+    )
 }
 
-export default Provider;
+export default Provider
