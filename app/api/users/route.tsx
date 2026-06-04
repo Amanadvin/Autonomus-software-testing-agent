@@ -1,3 +1,4 @@
+console.log("USERS API LOADED");
 import { db } from "@/db";
 import { users } from "@/db/schema";
 import { currentUser } from "@clerk/nextjs/server";
