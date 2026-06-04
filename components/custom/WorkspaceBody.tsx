@@ -21,7 +21,7 @@ export default function WorkspaceBody({ userDetail }: { userDetail?: { credits: 
                 </div>
                 <div>
 
-                   <button>Install</button>
+                   
                 </div>
             </Card>
     </div>

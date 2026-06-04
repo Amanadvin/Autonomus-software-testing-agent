@@ -26,7 +26,7 @@ function WorkspaceHeader() {
                 {userDetail && (
                     <div className='flex items-center gap-2 bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm font-medium border border-blue-100'>
                         <Coins className='w-4 h-4 text-blue-500' />
-                        {userDetail.credits || 1000} Credits 1000
+                        {userDetail.credits} Credits
                     </div>
                 )}
                 <UserButton />
